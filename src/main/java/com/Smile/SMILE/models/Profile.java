@@ -7,77 +7,102 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "PERFIL")
+@Table(name = "profilies")
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="DNI")
+    @Column(name = "id")
     private Long id;
-    @Column (name="id_ciudad")
-    private String ciudad;
-    @Column(name = "edad")
-    private int edad;
-    @Column (name="TLF Contacto")
-    private int contacto;
-    @Column (name= "direccion")
-    private String direccion;
-    @Column(name="id_tratamiento")
-    private String id_tratamiento;
+    @Column(name = "id_city")
+    private String city;
+    @Column(name = "age")
+    private int age;
+    @Column(name = "phone")
+    private int phone;
+    @Column(name = "direction")
+    private String direction;
+    @Column(name = "id_treatment")
+    private String id_treatment;
 
-    public Profile(Long id, String ciudad, int edad, int contacto, String direccion, String id_tratamiento) {
+    public Profile(Long id, String city, int age, int phone, String direction, String id_treatment) {
         this.id = id;
-        this.ciudad = ciudad;
-        this.edad = edad;
-        this.contacto = contacto;
-        this.direccion = direccion;
-        this.id_tratamiento = id_tratamiento;
+        this.city = city;
+        this.age = age;
+        this.phone = phone;
+        this.direction = direction;
+        this.id_treatment = id_treatment;
     }
 
-    public Profile(){
-
+    public Profile() {
     }
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
-    public String getCiudad() {
-        return ciudad;
+
+    public String getCity() {
+        return city;
     }
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
+
+    public void setCity(String city) {
+        this.city = city;
     }
-    public int getEdad() {
-        return edad;
+
+    public int getAge() {
+        return age;
     }
-    public void setEdad(int edad) {
-        this.edad = edad;
+
+    public void setAge(int age) {
+        this.age = age;
     }
-    public int getContacto() {
-        return contacto;
+
+    public int getPhone() {
+        return phone;
     }
-    public void setContacto(int contacto) {
-        this.contacto = contacto;
+
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
-    public String getDireccion() {
-        return direccion;
+
+    public String getDirection() {
+        return direction;
     }
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+
+    public void setDirection(String direction) {
+        this.direction = direction;
     }
-    public String getId_tratamiento() {
-        return id_tratamiento;
+
+    public String getId_treatment() {
+        return id_treatment;
     }
-    public void setId_tratamiento(String id_tratamiento) {
-        this.id_tratamiento = id_tratamiento;
+
+    public void setId_treatment(String id_treatment) {
+        this.id_treatment = id_treatment;
     }
+
+    @OneToOne
+    @JoinColumn(name = "id_patient" ,nullable=true)
+    private Patient patient;
+    // @ManyToOne
+    // @JoinColumn(name = "id_city" , nullable = true)
+    // private City cities;
+
+
+   
     
-    @OneToOne(mappedBy = "Profile")
-    private List <Patient> PACIENTE;
+
+
+
+
+
 }
