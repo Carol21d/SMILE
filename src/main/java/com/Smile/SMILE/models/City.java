@@ -9,13 +9,13 @@ import javax.persistence.GenerationType;
 
 
 @Entity
-@Table(name="CIUDAD")
+@Table(name="cities")
 public class City {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name="ID_ciudad",nullable = false)
+  @Column(name="id_city",nullable = false)
   private Long id;
-    @Column(name="NOMBRE", nullable = false)
+    @Column(name="name", nullable = false)
     private String name;
 
     public City(){

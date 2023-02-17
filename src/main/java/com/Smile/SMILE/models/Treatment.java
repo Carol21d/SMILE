@@ -10,15 +10,15 @@ import javax.persistence.GenerationType;
 
 
 @Entity
-@Table(name="TRATAMIENTO")
+@Table(name="treatments")
 public class Treatment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="ID_TRATAMIENTO", nullable = false)
+    @Column(name="id_treatment", nullable = false)
     private Long id;
-    @Column(name="TITULO")
+    @Column(name="title")
     private String title;
-    @Column(name="DESCRIPCION")
+    @Column(name="description")
     private String description;
 
     public Treatment(Long id, String title, String description) {

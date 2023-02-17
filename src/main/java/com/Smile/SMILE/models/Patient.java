@@ -10,39 +10,41 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PACIENTE")
+@Table(name = "patients")
 public class Patient {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "DNI", nullable = false)
-    private Long id;
+  
+    @Column(name = "dni", nullable = false)
+    private Long dni;
     @Column(nullable = false, length = 45)
     private String name;
-   
-    public Patient(Long id, String name) {
-        this.id = id;
+
+    public Patient(Long dni, String name) {
+        this.dni = dni;
         this.name = name;
     }
 
-    public Patient(){
+    public Patient() {
 
     }
 
     public Long getId() {
-        return id;
+        return dni;
     }
-    public void setId(Long id) {
-        this.id = id;
+
+    public void setId(Long dni) {
+        this.dni = dni;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
    
-     @OneToOne 
-     @JoinColumn(name="DNI", nullable = true)
-     Profile profile;
     
+
 }
