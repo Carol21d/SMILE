@@ -11,21 +11,26 @@ import com.Smile.SMILE.repository.repositoryProfile;
 
 public class ServiceSmile {
     private repositoryProfile repository;
-    public ServiceSmile(repositoryProfile repository){
+
+    public ServiceSmile(repositoryProfile repository) {
         this.repository = repository;
     }
-    public List<Profile> getAll(){
+
+    public List<Profile> getAll() {
         return repository.findAll();
     }
-    public Profile getOne(Long id){
+
+    public Profile getOne(Long id) {
         Profile Profile = repository.findById(id).orElse(null);
         return Profile;
     }
-    public Profile save(Profile newProfile){
+
+    public Profile save(Profile newProfile) {
         Profile ProfileSaved = repository.save(newProfile);
         return ProfileSaved;
     }
-    public void delete(Long id){
+
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }
