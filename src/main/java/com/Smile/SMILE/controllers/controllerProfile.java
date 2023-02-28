@@ -2,6 +2,7 @@ package com.Smile.SMILE.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,14 +19,14 @@ import com.Smile.SMILE.models.Profile;
 import com.Smile.SMILE.services.ServiceSmile;
 
 @RestController
-@RequestMapping(path = "/api/profilies")
+@RequestMapping(path = "/api/clinicadental")
 public class controllerProfile {
-
+    @Autowired
     private ServiceSmile service;
 
-    public controllerProfile(ServiceSmile service){
-        this.service = service;
-    }
+    // public controllerProfile(ServiceSmile service){
+    //     this.service = service;
+    // }
 
     @GetMapping(value="")
     public List<Profile> index(){
