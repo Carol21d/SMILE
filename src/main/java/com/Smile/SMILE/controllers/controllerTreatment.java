@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Smile.SMILE.models.Profile;
 
 import com.Smile.SMILE.services.ServiceProfile;
+import com.Smile.SMILE.services.ServiceTreatment;
 
 
 @RestController
 @RequestMapping(path = "/api/clinicadental")
-public class controllerProfile {
+public class controllerTreatment {
     @Autowired
-    private ServiceProfile service;
+    private ServiceTreatment service;
 
     // public controllerProfile(ServiceSmile service){
     //     this.service = service;
@@ -63,3 +64,4 @@ public class controllerProfile {
     }
 
 }
+

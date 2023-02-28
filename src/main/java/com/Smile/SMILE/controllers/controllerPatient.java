@@ -16,19 +16,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Smile.SMILE.models.Profile;
-
+import com.Smile.SMILE.services.ServicePatient;
 import com.Smile.SMILE.services.ServiceProfile;
 
 
 @RestController
-@RequestMapping(path = "/api/clinicadental")
-public class controllerProfile {
+@RequestMapping(path = "/api/clinicadental/patient")
+public class controllerPatient {
     @Autowired
-    private ServiceProfile service;
+    private ServicePatient service;
 
-    // public controllerProfile(ServiceSmile service){
-    //     this.service = service;
-    // }
+  
 
     @GetMapping(value="")
     public List<Profile> index(){
@@ -63,3 +61,4 @@ public class controllerProfile {
     }
 
 }
+
