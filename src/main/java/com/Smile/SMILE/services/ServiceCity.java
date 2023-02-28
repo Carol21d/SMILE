@@ -11,6 +11,5 @@ public interface ServiceCity {
   public Optional <City> findById(Long Id);
   public City save(City city);
   public void deleteById(Long id);
-   
-
+  
 }
