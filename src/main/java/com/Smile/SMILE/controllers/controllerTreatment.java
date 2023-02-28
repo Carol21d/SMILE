@@ -22,7 +22,7 @@ import com.Smile.SMILE.services.ServiceTreatment;
 
 
 @RestController
-@RequestMapping(path = "/api/clinicadental")
+@RequestMapping(path = "/api/clinicadental/treatment")
 public class controllerTreatment {
     @Autowired
     private ServiceTreatment service;

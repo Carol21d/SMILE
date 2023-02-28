@@ -21,7 +21,7 @@ import com.Smile.SMILE.services.ServiceProfile;
 
 
 @RestController
-@RequestMapping(path = "/api/clinicadental")
+@RequestMapping(path = "/api/clinicadental/city")
 public class controllerCity {
     @Autowired
     private ServiceCity service;
