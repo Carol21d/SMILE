@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Smile.SMILE.models.Profile;
-
+import com.Smile.SMILE.services.ServiceCity;
 import com.Smile.SMILE.services.ServiceProfile;
 
 
 @RestController
-@RequestMapping(path = "/api/clinicadental/profile")
-public class controllerProfile {
+@RequestMapping(path = "/api/clinicadental/city")
+public class controllerCity {
     @Autowired
-    private ServiceProfile service;
+    private ServiceCity service;
 
     // public controllerProfile(ServiceSmile service){
     //     this.service = service;
