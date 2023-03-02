@@ -12,4 +12,6 @@ public interface ServiceProfile {
     public Optional<Profile> findById(Long Id);
     public Profile save(Profile profile);
     public void deleteById(Long id);
+    public List<Profile> getAll();
+    public Profile getOne(Long id);
 }
