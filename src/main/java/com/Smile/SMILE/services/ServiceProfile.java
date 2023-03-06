@@ -8,10 +8,9 @@ import com.Smile.SMILE.models.Profile;
 
 public interface ServiceProfile {
     
-    public List<Profile>findAll();
-    public Optional<Profile> findById(Long Id);
     public Profile save(Profile profile);
     public void deleteById(Long id);
-    public List<Profile> getAll();
-    public Profile getOne(Long id);
+    public List<Profile>findAll();
+    public Optional<Profile> findById(Long Id);
+   
 }

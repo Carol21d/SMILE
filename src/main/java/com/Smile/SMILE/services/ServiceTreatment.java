@@ -12,6 +12,5 @@ public interface ServiceTreatment {
     public Optional<Treatment>findById(Long Id);
     public Treatment save(Profile newProfile);
     public void deleteById(Long id);
-    public List<Profile> getAll();
-    public Profile getOne(Long id);
+  
 }
