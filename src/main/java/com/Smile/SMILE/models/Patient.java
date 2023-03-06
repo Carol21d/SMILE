@@ -3,7 +3,10 @@ package com.Smile.SMILE.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "patients")
@@ -40,7 +43,8 @@ public class Patient {
         this.name = name;
     }
 
-   
+    @ManyToMany
+    private List<Treatment> treatment;
     
 
 }

@@ -4,7 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import java.util.List;
+
 import javax.persistence.GenerationType;
 
 
@@ -38,6 +42,8 @@ public class City {
         this.name = name;
     }
 
+    @OneToMany
+    private List<Profile> profiles;
     
 
 }

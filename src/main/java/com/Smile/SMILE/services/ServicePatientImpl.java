@@ -41,7 +41,7 @@ public class ServicePatientImpl implements ServicePatient {
     @Transactional
     @Override
     public Patient save(Patient patient) {
-        // TODO Auto-generated method stub
+        
         return repositoryPatient.save(patient);
     }
 

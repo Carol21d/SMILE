@@ -1,6 +1,7 @@
 package com.Smile.SMILE.controllers;
 
-import java.util.List;
+import java.util.Optional;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,14 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Smile.SMILE.models.Profile;
+import com.Smile.SMILE.models.Treatment;
 
-import com.Smile.SMILE.services.ServiceProfile;
 import com.Smile.SMILE.services.ServiceTreatment;
 
 
 @RestController
-@RequestMapping(path = "/api/clinicadental/treatment")
+@RequestMapping(path = "api/treatment")
 public class controllerTreatment {
     @Autowired
     private ServiceTreatment service;
@@ -31,20 +31,24 @@ public class controllerTreatment {
     //     this.service = service;
     // }
 
-    @GetMapping(value="")
-    public List<Profile> index(){
-        return service.getAll();
-    }
+    @GetMapping
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(service.findAll());
+    } 
     @GetMapping(value = "/{id}")
-    public Profile show(@PathVariable Long id){
-        return service.getOne(id);
+    public ResponseEntity<?>get(@PathVariable Long id){
+        Optional<Treatment> oTreatment = service.findById(id);
+        if(oTreatment.isEmpty()){
+            return ResponseEntity.notFound().build();
+        } 
+        return ResponseEntity.ok(oTreatment.get());
     }
 
     @PostMapping(value="")
     @ResponseStatus(value= HttpStatus.CREATED)
-    public ResponseEntity<?> store(@RequestBody Profile newProfile){
+    public ResponseEntity<?> store(@RequestBody Treatment treatment){
         try{
-            return ResponseEntity.ok(service.save(newProfile));
+            return ResponseEntity.ok(service.save(treatment));
         } catch (Exception e){
             return ResponseEntity.status(500).body("Error");
         }
@@ -55,12 +59,13 @@ public class controllerTreatment {
         service.deleteById(id);
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> updating(@RequestBody Profile newProfile){
-        try{
-            return ResponseEntity.ok(service.save(newProfile));
-        } catch (Exception e){
-            return ResponseEntity.status(500).body("Error");
+    public ResponseEntity<?> updating(@RequestBody Treatment treatmentDetails, @PathVariable Long id){
+        Optional<Treatment> treatment = service.findById(id);
+        if(!treatment.isPresent()){
+            return ResponseEntity.notFound().build();
         }
+        treatment.get().setTitle(treatmentDetails.getTitle());
+        return ResponseEntity.ok().build();
     }
 
 }
