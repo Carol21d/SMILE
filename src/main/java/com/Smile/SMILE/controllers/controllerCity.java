@@ -1,6 +1,7 @@
 package com.Smile.SMILE.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,35 +16,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Smile.SMILE.models.City;
 import com.Smile.SMILE.models.Profile;
 import com.Smile.SMILE.services.ServiceCity;
-import com.Smile.SMILE.services.ServiceProfile;
+
 
 
 @RestController
-@RequestMapping(path = "/api/clinicadental/city")
+@RequestMapping(path = "api/city")
 public class controllerCity {
     @Autowired
     private ServiceCity service;
 
-    // public controllerProfile(ServiceSmile service){
-    //     this.service = service;
-    // }
+  
 
-    @GetMapping(value="")
-    public List<Profile> index(){
-        return service.getAll();
+    @GetMapping
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.ok(service.findAll());
     }
+
     @GetMapping(value = "/{id}")
-    public Profile show(@PathVariable Long id){
-        return service.getOne(id);
+    public ResponseEntity<?>get(@PathVariable Long id){
+        Optional<City> oCity = service.findById(id);
+        if(oCity.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(oCity.get());
     }
 
     @PostMapping(value="")
     @ResponseStatus(value= HttpStatus.CREATED)
-    public ResponseEntity<?> store(@RequestBody Profile newProfile){
+    public ResponseEntity<?> store(@RequestBody City city){
         try{
-            return ResponseEntity.ok(service.save(newProfile));
+            return ResponseEntity.ok(service.save(city));
         } catch (Exception e){
             return ResponseEntity.status(500).body("Error");
         }
@@ -54,12 +59,14 @@ public class controllerCity {
         service.deleteById(id);
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> updating(@RequestBody Profile newProfile){
-        try{
-            return ResponseEntity.ok(service.save(newProfile));
-        } catch (Exception e){
-            return ResponseEntity.status(500).body("Error");
-        }
+    public ResponseEntity<?> updating(@RequestBody City cityDetails, @PathVariable Long id){
+       Optional<City> city = service.findById(id);
+       if(!city.isPresent()){
+        return ResponseEntity.notFound().build();
+       }
+       city.get().setName(cityDetails.getName());
+       return ResponseEntity.ok().build();
+
     }
 
 }
