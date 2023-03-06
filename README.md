@@ -24,8 +24,32 @@
 
 # Herramientas usadas:
 1. Visual Studio 
+2. Postman
+3. Workbench
 
 
 ## Recommended IDE Setup
+
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+# backend
+
+  ```sh
+mvn clean package
+```
+  
+ ### Autores
+ 
+- Bryan Johel https://github.com/BryanJPJ
+- Carol Vilchez https://github.com/Carol21d
 
 
