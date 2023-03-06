@@ -90,16 +90,5 @@ public class Profile {
     @OneToOne
     @JoinColumn(name = "id_patient" ,nullable=true)
     private Patient patient;
-    // @ManyToOne
-    // @JoinColumn(name = "id_city" , nullable = true)
-    // private City cities;
-
-
-   
-    
-
-
-
-
 
 }

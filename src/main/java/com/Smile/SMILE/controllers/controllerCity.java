@@ -1,6 +1,5 @@
 package com.Smile.SMILE.controllers;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Smile.SMILE.models.City;
-import com.Smile.SMILE.models.Profile;
 import com.Smile.SMILE.services.ServiceCity;
 
 
