@@ -21,14 +21,14 @@ import com.Smile.SMILE.services.ServiceProfile;
 
 
 @RestController
-@RequestMapping(path = "api/profile")
+@RequestMapping(path = "/api/profile")
 public class controllerProfile {
     @Autowired
     private ServiceProfile service;
 
    
 
-    @GetMapping
+    @GetMapping (value = " ")
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok(service.findAll());
     }

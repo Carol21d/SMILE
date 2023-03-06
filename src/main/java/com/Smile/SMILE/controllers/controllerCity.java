@@ -21,14 +21,14 @@ import com.Smile.SMILE.services.ServiceCity;
 
 
 @RestController
-@RequestMapping(path = "api/city")
+@RequestMapping(path = "/api/city")
 public class controllerCity {
     @Autowired
     private ServiceCity service;
 
   
 
-    @GetMapping
+    @GetMapping(value = "")
     public ResponseEntity<?> getAll() {
         return ResponseEntity.ok(service.findAll());
     }
