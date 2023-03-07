@@ -17,32 +17,30 @@ import com.Smile.SMILE.repository.repositoryCity;
 
 @ExtendWith(MockitoExtension.class)
 public class ServiceCityTest {
+
     @InjectMocks
-    ServiceCity service;
+    ServiceCityImpl service;
 
     @Mock
     repositoryCity repository;
 
+    public ServiceCityTest() {
+        this.service = new ServiceCityImpl();
+    }
 
     @Test
-   public void testFindById() {
+    public void testFindById() {
 
-    City murcia = new City(0L,"Murcia");
-    murcia.setId(0L);
+        City badCity = new City(null, null);
+        City murcia = new City(1L, "Murcia");
+        murcia.setId(1L);
 
+        when(repository.findById(1L)).thenReturn(Optional.of(murcia));
+        City city = service.findById(1L).orElse(badCity);
 
-    when(repository.findById(0L)).thenReturn(Optional.of(murcia));
-
-
-    // City city = service.findById(0L);
-
-    assertThat(murcia.getId()).isEqualTo(0L);
-    assertThat(murcia.getName()).isEqualTo("Murcia");
+        assertThat(city.getId()).isEqualTo(1L);
+        assertThat(city.getName()).isEqualTo("Murcia");
 
     }
-  
-
-
 
 }
-
